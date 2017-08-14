@@ -4,7 +4,6 @@
 char ssid[] = "";
 char pass[] = "";
 char host[] = "";
-
 void setup(){
 
   Serial.begin(115200);
