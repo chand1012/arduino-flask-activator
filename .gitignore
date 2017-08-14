@@ -1,4 +1,6 @@
-flask-app/__pycache__
-flask-app/test.py
-flask-app/test.json
+__pycache__
+test.py
+test.json
+login.json
 start.bat
+post_test.py
