@@ -1,8 +1,9 @@
 # Use this as a base for the email, just make it limit it to no subject
 # https://gist.github.com/chand1012/5c6c0238defe017b1856a81ce6382d0f
 from flask import Flask
-from json import loads
-import requests
+from login_lib import *
+# we will need this later
+# import requests
 import imaplib
 import email
 name = "Arduino Activator"
@@ -10,8 +11,9 @@ imap_ssl_host = 'imap.gmail.com'
 imap_ssl_port = 993
 last = 0
 current = 0
-user = ""
-password = ""
+logins = email_login_info()
+user = logins['email']
+password = logins['password']
 def get_latest_email(username, epass):
     FROM_EMAIL  = username
     FROM_PWD    = epass
