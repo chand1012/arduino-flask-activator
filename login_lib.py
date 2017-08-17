@@ -1,6 +1,7 @@
 from json import loads
 import imaplib
 import email
+
 def email_login_info(file_name='login.json'):
     try:
         file_keys = open(file_name)
@@ -21,7 +22,7 @@ def email_login_info(file_name='login.json'):
 def get_latest_email(username, epass):
     FROM_EMAIL  = username
     FROM_PWD    = epass
-    SMTP_SERVER = "imap.gmail.com"
+    SMTP_SERVER = "imap.mail.yahoo.com"
     SMTP_PORT   = 993
 
     mail = imaplib.IMAP4_SSL(SMTP_SERVER)
@@ -39,5 +40,3 @@ def get_latest_email(username, epass):
         if isinstance(response_part, tuple):
             msg = email.message_from_string(response_part[1].decode('utf-8'))
             return [msg, first_email_id, latest_email_id]
-
-#add unseen function

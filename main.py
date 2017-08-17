@@ -4,16 +4,15 @@ from flask import Flask
 from login_lib import *
 # we will need this later
 # import requests
-name = "Arduino Activator"
 imap_ssl_host = 'imap.gmail.com'
 imap_ssl_port = 993
 logins = email_login_info()
-current = 0
-global last
 user = logins['email']
 password = logins['password']
 
-app = Flask(name)
+app = Flask(__name__)
+current = 0
+last = 0
 
 @app.route('/')
 def hello_world():
@@ -23,6 +22,8 @@ def hello_world():
 
 @app.route('/incoming', methods=['GET', 'POST'])
 def more(): # needs fixed to eliminate duplicates
+    global last
+    global current
     latest_email = get_latest_email(user, password)
     thing = latest_email[0]
     current = latest_email[2]
